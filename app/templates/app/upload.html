@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Загрузка JSON</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            margin: 40px;
+            padding: 10px;
+            background-color: rgb(207, 244, 236);
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        form {
+            background: #dae9f2;
+            padding: 10px;
+            border-radius: 10px;
+            width: 400px;
+        }
+
+        button {
+            padding: 10px 15px;
+            background: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #45a049;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 15px;
+        }
+    </style>
+
+</head>
+<body>
+    <h1>Загрузка JSON файла</h1>
+
+    {% for message in messages %}
+        <p>{{ message }}</p>
+    {% endfor %}
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Загрузить</button>
+    </form>
+
+    <p><a href="{% url 'records_list' %}">Перейти к таблице записей</a></p>
+</body>
+</html>
